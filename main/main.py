@@ -80,11 +80,8 @@ for indice, link in enumerate(gender['link']):
         print(f"acessando: {link}")
         get_books(link, url, indice)
 
-for key in books.keys():
-    print(f'{key}: {len(key)}')
 
-if input('salvar? S/N') is not None:
-    df = pd.DataFrame(books)
-    df.sort_values(by='Título')
-    df.drop_duplicates()
-    df.to_excel('livros.xlsx', index=False)
+df = pd.DataFrame(books)
+df.sort_values(by='Título')
+df.drop_duplicates()
+df.to_excel('livros.xlsx', index=False)
