@@ -69,13 +69,12 @@ def get_books(page, url, indice):
 for indice, link in enumerate(gender['link']):
     bs = BeautifulSoup(urlopen(link), 'html.parser')
     pages = check_pages(bs)
-
-    if pages is not None:
-        if len(pages) > 0:
-            for link in pages:
-                new_url = url + link
-                print(f"acessando: {new_url}")
-                get_books(new_url, url, indice)
+    
+    if pages is not None and len(pages) > 0:
+        for link in pages:
+            new_url = url + link
+            print(f"acessando: {new_url}")
+            get_books(new_url, url, indice)
     else:
         print(f"acessando: {link}")
         get_books(link, url, indice)
